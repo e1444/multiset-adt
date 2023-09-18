@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 public class Tree implements MultiSet {
+
     private Object root;
     private ArrayList<Tree> subtrees;
 
@@ -50,16 +51,27 @@ public class Tree implements MultiSet {
 
     @Override
     public boolean is_empty() {
-        return false;
+        return this.subtrees.isEmpty();
     }
 
     @Override
     public int count(Object item) {
-        return 0;
+        int count = 0;
+        if (this.root == item) {
+            count += 1;
+        }
+        for(Tree t: this.subtrees){
+            count += t.count(item);
+        }
+        return count;
     }
 
     @Override
     public int size() {
-        return 0;
+        int count = 1;
+        for(Tree t: this.subtrees){
+            count += t.size();
+        }
+        return count;
     }
 }
