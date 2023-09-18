@@ -51,7 +51,7 @@ public class Tree implements MultiSet {
 
     @Override
     public boolean is_empty() {
-        return this.subtrees.isEmpty();
+        return this.subtrees.isEmpty() && this.root == null;
     }
 
     @Override
