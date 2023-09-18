@@ -21,7 +21,7 @@ public class Tree implements MultiSet {
             return true;
         }
         else if (this.subtrees.isEmpty()) {
-            this.subtrees = new ArrayList<Tree>();
+            this.subtrees = new ArrayList<>();
             this.subtrees.add(new Tree(item, null));
             return true;
         }
