@@ -1,13 +1,14 @@
-public class Tree implements MultiSet {
+import java.util.ArrayList;
 
+public class Tree implements MultiSet {
     private Object root;
-    private Tree[] subtrees;
+    private ArrayList<Tree> subtrees;
 
     public Tree(){
 
     }
 
-    public Tree(Object root, Tree[] subtrees){
+    public Tree(Object root, ArrayList<Tree> subtrees){
         this.subtrees = subtrees;
         this.root = root;
     }
@@ -15,7 +16,26 @@ public class Tree implements MultiSet {
 
     @Override
     public boolean add(Object item) {
-        return false;
+        if (this.is_empty()) {
+            this.root = item;
+            return true;
+        }
+        else if (this.subtrees.isEmpty()) {
+            this.subtrees = new ArrayList<Tree>();
+            this.subtrees.add(new Tree(item, null));
+            return true;
+        }
+        else {
+            int rn = 1 + (int)(Math.random() * ((2) + 1));
+            if (rn == 1) {
+                this.subtrees.add(new Tree(item, null));
+            }
+            else {
+                int subtree_index = (int)(Math.random() * ((this.subtrees.size()) + 1));
+                this.subtrees.get(subtree_index).add(item);
+            }
+            return true;
+        }
     }
 
     @Override
