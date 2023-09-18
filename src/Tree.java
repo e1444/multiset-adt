@@ -1,4 +1,18 @@
 public class Tree implements MultiSet {
+
+    private Object root;
+    private Tree[] subtrees;
+
+    public Tree(){
+
+    }
+
+    public Tree(Object root, Tree[] subtrees){
+        this.subtrees = subtrees;
+        this.root = root;
+    }
+
+
     @Override
     public boolean add(Object item) {
         return false;
